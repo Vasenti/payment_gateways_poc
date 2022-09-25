@@ -1,0 +1,18 @@
+{
+    "presets": ["@babel/typescript", ["@babel/env", { "modules": false }]],
+    "plugins": [
+        ["module-resolver", {
+          "root": ["./src"],
+          "alias": {}
+        }],
+          "babel-plugin-transform-typescript-metadata",
+          ["@babel/plugin-proposal-decorators", { "legacy": true }],
+          ["@babel/plugin-proposal-class-properties", { "loose": true }],
+          ["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
+      ],
+    "env": {
+      "test": {
+        "presets": ["@babel/typescript", ["@babel/env", { "modules": "commonjs" }]]
+      }
+    }
+}

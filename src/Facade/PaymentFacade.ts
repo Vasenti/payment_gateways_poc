@@ -10,8 +10,7 @@ export class PaymentFacade implements IPaymentFacade {
 
     constructor (
         @inject(TYPES.PaymentPayPal) private readonly paymentPaypal: IPaymentPayPal,
-        @inject(TYPES.PaymentMercadoPago) private readonly paymentMercadoPago: IPaymentMercadoPago
-    ){}
+        @inject(TYPES.PaymentMercadoPago) private readonly paymentMercadoPago: IPaymentMercadoPago){}
     makePaymentWithMercadoPago(paymentDetail: PaymentDetail): boolean {
         return this.paymentPaypal.makePayment(paymentDetail);
     }

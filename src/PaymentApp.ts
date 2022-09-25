@@ -1,3 +1,5 @@
+'use strict'
+
 import 'reflect-metadata'
 
 import { Container } from "inversify";
