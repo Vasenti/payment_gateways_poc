@@ -2,13 +2,16 @@
   "name": "prueba_tecnica_clikalia",
   "version": "1.0.0",
   "description": "prueba técnica de backoffice con pasarela de pago configurable",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "scripts": {
     "lint": "eslint . --ext .ts",
     "lint.fix": "eslint . --ext .ts —-fix",
     "test:unit:PaymentApp": "jest --watch PaymentApp.test.ts"
   },
-  "author": "",
+  "author": "Oscar Daniel Ledesma Mareco",
+  "repository": {
+    "url": "https://github.com/Vasenti/payment_gateways_poc"
+  },
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.19.1",
