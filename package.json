@@ -4,10 +4,14 @@
   "description": "prueba técnica de backoffice con pasarela de pago configurable",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint . --ext .ts",
+    "lint.fix": "eslint . --ext .ts —-fix"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.38.0",
+    "@typescript-eslint/parser": "^5.38.0",
+    "eslint": "^8.24.0"
   }
 }
