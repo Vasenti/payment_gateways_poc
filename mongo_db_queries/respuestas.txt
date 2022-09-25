@@ -10,3 +10,4 @@ evolución con un avg spawn mayor de 4, se necesita el nombre y
 número de cada pokemon que cumpla.
 Tiempo aproximado: 1-2h
 
+db.pokemons.find({prev_evolution: {$exists: true}, avg_spawns: {$gt: 4}}, {name: true, num: true, _id: false})

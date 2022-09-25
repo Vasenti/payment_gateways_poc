@@ -2,31 +2,29 @@ import { PaymentDetail } from "../Model/PaymentDetail";
 import { IPaymentFacade } from "./IPaymentFacade";
 import { IPaymentPayPal } from "../PaymentGateways/Paypal/IPaymentPayPal";
 import { IPaymentMercadoPago } from "../PaymentGateways/MercadoPago/IPaymentMercadoPago";
+import { inject, injectable } from "inversify";
+import { TYPES } from "../DITypes";
 
+@injectable()
 export class PaymentFacade implements IPaymentFacade {
-    private readonly _paymentPaypal: IPaymentPayPal;
-    private readonly _paymentMercadoPago: IPaymentMercadoPago;
 
     constructor (
-        paymentPaypal: IPaymentPayPal,
-        paymentMercadoPago: IPaymentMercadoPago
-    ){
-        this._paymentPaypal = paymentPaypal;
-        this._paymentMercadoPago = paymentMercadoPago;
+        @inject(TYPES.PaymentPayPal) private readonly paymentPaypal: IPaymentPayPal,
+        @inject(TYPES.PaymentMercadoPago) private readonly paymentMercadoPago: IPaymentMercadoPago
+    ){}
+    makePaymentWithMercadoPago(paymentDetail: PaymentDetail): boolean {
+        return this.paymentPaypal.makePayment(paymentDetail);
     }
-    makePaymentWithMercadoPago(paymentDetail: PaymentDetail): void {
-        this._paymentMercadoPago.makePayment(paymentDetail);
+    makeReimburseWithMercadoPago(paymentDetail: PaymentDetail): boolean {
+        return this.paymentMercadoPago.makeReimburse(paymentDetail);
     }
-    makeReimburseWithMercadoPago(paymentDetail: PaymentDetail): void {
-        this._paymentMercadoPago.makeReimburse(paymentDetail);
+    makePartialReimburseWithMercadoPago(paymentDetail: PaymentDetail): boolean {
+        return this.paymentMercadoPago.makeReimburse(paymentDetail);
     }
-    makePartialReimburseWithMercadoPago(paymentDetail: PaymentDetail): void {
-        this._paymentMercadoPago.makeReimburse(paymentDetail);
+    makePaymentWithPaypal(paymentDetail: PaymentDetail): boolean {
+        return this.paymentPaypal.makePayment(paymentDetail);
     }
-    makePaymentWithPaypal(paymentDetail: PaymentDetail): void {
-        this._paymentPaypal.makePayment(paymentDetail);
-    }
-    makeReimburseWithPaypal(paymentDetail: PaymentDetail): void {
-        this._paymentPaypal.makeReimburse(paymentDetail);
+    makeReimburseWithPaypal(paymentDetail: PaymentDetail): boolean {
+        return this.paymentPaypal.makeReimburse(paymentDetail);
     }
 }

@@ -1,6 +1,6 @@
 import { PaymentDetail } from "../Model/PaymentDetail"
 
 export interface IPaymentService {
-    pay(paymentDetail: PaymentDetail): void
-    reimburse(paymentDetail: PaymentDetail): void
+    pay(paymentDetail: PaymentDetail): boolean
+    reimburse(paymentDetail: PaymentDetail): boolean
 }

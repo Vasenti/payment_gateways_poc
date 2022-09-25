@@ -13,5 +13,9 @@
     "@typescript-eslint/eslint-plugin": "^5.38.0",
     "@typescript-eslint/parser": "^5.38.0",
     "eslint": "^8.24.0"
+  },
+  "dependencies": {
+    "inversify": "^6.0.1",
+    "reflect-metadata": "^0.1.13"
   }
 }

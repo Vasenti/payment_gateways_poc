@@ -1,38 +1,33 @@
+import { inject, injectable } from "inversify";
+import { TYPES } from "../DITypes";
 import { PaymentGateway } from "../Enum/EnumPaymentGateways";
 import { IPaymentFacade } from "../Facade/IPaymentFacade";
 import { PaymentDetail } from "../Model/PaymentDetail";
 import { IPaymentService } from "./IPaymentService";
 
+@injectable()
 export class PaymentService implements IPaymentService{
 
-    private readonly _paymentFacade: IPaymentFacade;
+    constructor(@inject(TYPES.PaymentFacade) private readonly _paymentFacade: IPaymentFacade){}
 
-    constructor(paymentFacade: IPaymentFacade){ 
-        this._paymentFacade = paymentFacade;
-    }
-
-    pay(paymentDetail: PaymentDetail): void {
+    pay(paymentDetail: PaymentDetail): boolean {
         const paymentGateway = paymentDetail.paymentGateway;
 
         switch(paymentGateway){
             case PaymentGateway.mercadopago:
-                this._paymentFacade.makePaymentWithMercadoPago(paymentDetail);
-                break;
+                return this._paymentFacade.makePaymentWithMercadoPago(paymentDetail);
             case PaymentGateway.paypal: 
-                this._paymentFacade.makePaymentWithPaypal(paymentDetail);
-                break;
+                return this._paymentFacade.makePaymentWithPaypal(paymentDetail);
         }
     }
-    reimburse(paymentDetail: PaymentDetail): void {
+    reimburse(paymentDetail: PaymentDetail): boolean {
         const paymentGateway = paymentDetail.paymentGateway;
 
         switch(paymentGateway){
             case PaymentGateway.mercadopago:
-                this._paymentFacade.makePartialReimburseWithMercadoPago(paymentDetail);
-                break;
+                return this._paymentFacade.makePartialReimburseWithMercadoPago(paymentDetail);
             case PaymentGateway.paypal:
-                this._paymentFacade.makeReimburseWithPaypal(paymentDetail);
-                break;
+                return this._paymentFacade.makeReimburseWithPaypal(paymentDetail);
         }
     }
 

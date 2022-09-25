@@ -6,8 +6,6 @@ patrón de diseño llamado Facade.
 
 
 
-
-
 ## Toma de decisiones
 
 #### ¿Por qué utilizar Facade como patrón de diseño?
