@@ -1,0 +1,14 @@
+1. Todos los pokemon que tengan 1 o más evoluciones, se debe
+proporcionar por cada evolución: nombre, número y spawn time.
+Tiempo aproximado: 15-30 minutos
+
+db.pokemons.find({next_evolution: {$gt: {$size: 1}}}, {name: true, num: true, spawn_time: true, _id: false})
+
+
+2. Todos los pokemon de primera evolución que tengan alguna
+evolución con un avg spawn mayor de 4, se necesita el nombre y
+número de cada pokemon que cumpla.
+Tiempo aproximado: 1-2h
+
+
+
