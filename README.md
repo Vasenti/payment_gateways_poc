@@ -30,7 +30,7 @@ y al que delegará.
 
 #### Cosas que hubiese implementado
 
-Inyección de dependencias
+Servidor express
 
 
 ## Acknowledgements
